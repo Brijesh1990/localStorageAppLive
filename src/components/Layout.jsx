@@ -18,9 +18,7 @@ return (
     className="w-150 h-150 sm:w-24 sm:h-24 md:w-32 md:h-32 object-contain"
   />
 
-  <p className="mt-4 text-gray-600 text-3xl  sm:text-2xl animate-pulse">
-    Loading...
-  </p>
+ 
 </div>
 
 )
