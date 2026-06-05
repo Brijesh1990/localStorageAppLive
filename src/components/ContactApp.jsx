@@ -50,88 +50,116 @@ const YOUR_PUBLIC_KEY="I3OKeIkWPY2_W0BsP";
    <>
    <Header/>
   {/* Main Content */}
-  <main className="max-w-6xl mx-auto p-4 sm:p-6">
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center w-180 mx-auto mt-10">
+ 
+<main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
-      {/* Left Grid - Animated GIF */}
-      <section className="flex justify-center">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_LpHIZup0PurWcUdNi89lw3spUtvGWD658Q&s"
-          alt="Todo Animation"
-          className="w-full max-w-md rounded-2xl shadow-lg"
+    {/* Left Side Image */}
+    <section className="flex justify-center">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_LpHIZup0PurWcUdNi89lw3spUtvGWD658Q&s"
+        alt="Contact Us"
+        className="w-full max-w-sm sm:max-w-md lg:max-w-lg rounded-3xl shadow-xl object-cover"
+      />
+    </section>
+
+    {/* Right Side Form */}
+    <section className="bg-white shadow-xl rounded-3xl p-6 sm:p-8">
+      <ToastContainer />
+
+      <div className="mb-6">
+        <h2 className="text-3xl font-bold text-gray-800">
+          Contact Us
+        </h2>
+        <p className="text-gray-500 mt-2">
+          We'd love to hear from you. Send us a message.
+        </p>
+      </div>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+
+        {/* Name */}
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Full Name"
+          className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
         />
-      </section>
 
-      {/* Right Grid - Add Task Card */}
-      <section className="bg-white rounded-xl shadow-md p-5">
-        <ToastContainer />
-        <h2 className="text-2xl font-semibold mb-4">Contact with Us</h2>
-
-        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-          <div className="flex gap-3">
-            <input
-              type="text" name="name" value={name} onChange={(e) => setName(e.target.value)}
-              placeholder="Name"
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-        
-          </div>
-
-           <div className="flex gap-3">
-            <input
-              type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)}
-              placeholder="Email"
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          
-           <div className="flex gap-3">
-            <input
-              type="text" name="phone" value={phone} onChange={(e) => setPhone(e.target.value)}
-              placeholder="Phone"
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          <div className="flex gap-3">
-            <select
-              name="subject" value={subject} onChange={(e) => setSubject(e.target.value)}
-              className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              
-              <option value="">Select Subjects</option>
-              <option value="24x7 support">24x7 support</option>
-              <option value="customer care numbers">Customers care contact</option>
-              <option value="return">Return products</option>
-            </select>       
-            </div>
-            
+        {/* Email & Phone */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
-            type="text" name="message" value={message} onChange={(e) => setMessage(e.target.value)}
-            placeholder="Enter Message..."
-            className="border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email Address"
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
           />
+
+          <input
+            type="tel"
+            name="phone"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Phone Number"
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+          />
+        </div>
+
+        {/* Subject */}
+        <select
+          name="subject"
+          value={subject}
+          onChange={(e) => setSubject(e.target.value)}
+          className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+        >
+          <option value="">Select Subject</option>
+          <option value="24x7 support">24x7 Support</option>
+          <option value="customer care numbers">
+            Customer Care Contact
+          </option>
+          <option value="return">Return Products</option>
+        </select>
+
+        {/* Message */}
+        <textarea
+          name="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          rows={5}
+          placeholder="Enter your message..."
+          className="w-full border border-gray-300 rounded-xl px-4 py-3 resize-none focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+        />
+
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-3 pt-2">
 
           <button
             type="submit"
-            className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition"
+            className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white py-3 rounded-xl font-medium transition-all"
           >
-            Send
+            Send Message
           </button>
 
-          
           <button
             type="reset"
-            className="bg-red-600 hover:bg-red-400 text-white px-6 py-3 rounded-lg transition"
+            className="flex-1 bg-red-500 hover:bg-red-600 text-white py-3 rounded-xl font-medium transition-all"
           >
-            Reset
+            Reset Form
           </button>
-        </form>
-      </section>
 
-    </div>
-  </main>
+        </div>
+
+      </form>
+    </section>
+
+  </div>
+</main>
+
+
 </>
   )
 }

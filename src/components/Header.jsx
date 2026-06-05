@@ -84,19 +84,21 @@ export default function Header() {
             </Link>
 
             <Link
-              to="/completed"
+              to="#"
               className="hover:text-gray-200"
               onClick={() => setIsOpen(false)}
             >
-              Completed
+                Total Task <span className="bg-red-600 text-white p-2 rounded-full ms-2">
+               {JSON.parse(localStorage.getItem('tasks'))?.length || 0} 
+              </span> 
             </Link>
 
             <Link
-              to="/profile"
+              to="/contact-us"
               className="hover:text-gray-200"
               onClick={() => setIsOpen(false)}
             >
-              Profile
+              Contact Us
             </Link>
           </div>
         </nav>
